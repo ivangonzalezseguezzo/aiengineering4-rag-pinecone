@@ -1,0 +1,124 @@
+{
+  "titulo": "Catálogo de códigos de error",
+  "categoria": "errores",
+  "descripcion": "Códigos de error internos de Órbita Pagos, con su causa probable y la acción recomendada para Soporte y para las guardias.",
+  "errores": [
+    {
+      "codigo": "PAY-4000",
+      "titulo": "Falta el header Idempotency-Key",
+      "http_status": 400,
+      "servicio": "pagos-api",
+      "descripcion": "Se recibió un POST a /v1/payments o /v1/refunds sin el header Idempotency-Key.",
+      "causa_probable": "La integración del comercio no genera la clave de idempotencia o un proxy intermedio elimina headers no estándar.",
+      "accion_recomendada": "Pedir al comercio que envíe un UUID v4 nuevo por cada operación lógica y que reutilice el mismo solo al reintentar esa operación."
+    },
+    {
+      "codigo": "PAY-4091",
+      "titulo": "Clave de idempotencia reutilizada con otro cuerpo",
+      "http_status": 422,
+      "servicio": "pagos-api",
+      "descripcion": "Llegó una Idempotency-Key que ya se había usado en las últimas 24 horas, pero con un cuerpo de solicitud distinto al original.",
+      "causa_probable": "El comercio reutiliza la misma clave para operaciones diferentes, por ejemplo una clave fija por sesión de checkout.",
+      "accion_recomendada": "No reintentar con la misma clave. Generar una clave nueva para la operación nueva; si se trata de un reintento, enviar exactamente el mismo cuerpo."
+    },
+    {
+      "codigo": "PAY-4220",
+      "titulo": "Monto inválido",
+      "http_status": 422,
+      "servicio": "pagos-api",
+      "descripcion": "El monto del cobro es cero, negativo, tiene más de dos decimales o supera el máximo configurado para el comercio.",
+      "causa_probable": "Error de redondeo en la integración o un límite por comercio mal configurado.",
+      "accion_recomendada": "Enviar el monto en la unidad mínima con dos decimales y verificar el límite del comercio en el backoffice."
+    },
+    {
+      "codigo": "PAY-4290",
+      "titulo": "Límite de solicitudes excedido",
+      "http_status": 429,
+      "servicio": "api-gateway",
+      "descripcion": "El cliente superó el rate limit de su grupo de endpoints.",
+      "causa_probable": "Reintentos agresivos sin respetar Retry-After o un proceso batch que envía todo en ráfaga.",
+      "accion_recomendada": "Respetar el header Retry-After y distribuir los envíos en el tiempo. Si el volumen es legítimo, el comercio puede pedir una ampliación del límite."
+    },
+    {
+      "codigo": "PAY-5021",
+      "titulo": "El adquirente no respondió a tiempo",
+      "http_status": 502,
+      "servicio": "autorizaciones",
+      "descripcion": "La autorización no obtuvo respuesta del adquirente dentro del timeout, por lo que el resultado del cobro es incierto.",
+      "causa_probable": "Degradación o caída del adquirente, o problemas de red en el enlace dedicado.",
+      "accion_recomendada": "No reintentar el cobro con otra clave: consultar su estado con GET /v1/payments/{id}, que se resuelve por conciliación. Si la tasa supera el 5 %, la guardia redirige el tráfico a otro adquirente."
+    },
+    {
+      "codigo": "PAY-5030",
+      "titulo": "Servicio en mantenimiento",
+      "http_status": 503,
+      "servicio": "pagos-api",
+      "descripcion": "El servicio rechaza solicitudes porque está en una ventana de mantenimiento o con el kill switch de cobros activado.",
+      "causa_probable": "Mantenimiento programado o activación manual del kill switch durante un incidente.",
+      "accion_recomendada": "Reintentar con backoff exponencial respetando Retry-After. Verificar en la página de estado si hay un incidente o un mantenimiento anunciado."
+    },
+    {
+      "codigo": "AUTH-4011",
+      "titulo": "Token de acceso vencido",
+      "http_status": 401,
+      "servicio": "api-gateway",
+      "descripcion": "El token OAuth presentado venció. Los tokens de acceso duran 60 minutos.",
+      "causa_probable": "La integración cachea el token más tiempo del que dura o el reloj del servidor del comercio está desfasado.",
+      "accion_recomendada": "Renovar el token con el flujo client credentials antes de su vencimiento y sincronizar el reloj con NTP."
+    },
+    {
+      "codigo": "AUTH-4031",
+      "titulo": "Scope insuficiente",
+      "http_status": 403,
+      "servicio": "api-gateway",
+      "descripcion": "El token es válido pero no incluye el scope que exige el endpoint, por ejemplo payments:write para crear cobros.",
+      "causa_probable": "La credencial del comercio se creó con permisos de solo lectura.",
+      "accion_recomendada": "Solicitar desde el backoffice una credencial con el scope necesario; no compartir credenciales entre integraciones."
+    },
+    {
+      "codigo": "FRD-2001",
+      "titulo": "Antifraude fuera de tiempo",
+      "http_status": 200,
+      "servicio": "antifraude",
+      "descripcion": "El servicio antifraude no respondió en 300 milisegundos y pagos-api aplicó las reglas estáticas de respaldo. No es un error visible para el comercio.",
+      "causa_probable": "Saturación del servicio antifraude o latencia del modelo de machine learning.",
+      "accion_recomendada": "Si la tasa de FRD-2001 supera el 1 % durante 10 minutos, escalar a la guardia de antifraude: las reglas de respaldo son más permisivas y aumentan el riesgo de fraude."
+    },
+    {
+      "codigo": "DB-1105",
+      "titulo": "Réplica de lectura atrasada",
+      "http_status": 200,
+      "servicio": "plataforma-datos",
+      "descripcion": "Una réplica de lectura superó el atraso máximo tolerado de 30 segundos y se retiró del pool de lectura.",
+      "causa_probable": "Escrituras masivas en el primario (por ejemplo, una migración o un batch) o una réplica subdimensionada.",
+      "accion_recomendada": "Verificar el lag en el tablero de Aurora. Si persiste más de 15 minutos, pausar los batch de escritura y avisar a Plataforma de Datos."
+    },
+    {
+      "codigo": "DB-2001",
+      "titulo": "Pool de conexiones agotado",
+      "http_status": 503,
+      "servicio": "plataforma-datos",
+      "descripcion": "Una solicitud esperó más de 5 segundos por una conexión libre de PgBouncer y falló.",
+      "causa_probable": "Consultas lentas o transacciones abiertas durante llamadas de red. Agrandar el pool rara vez lo resuelve.",
+      "accion_recomendada": "Buscar en el tablero de consultas lentas y en las trazas las transacciones largas. Mitigar escalando réplicas del servicio solo si la base tiene margen de conexiones."
+    },
+    {
+      "codigo": "KFK-3002",
+      "titulo": "Lag alto de consumidor de Kafka",
+      "http_status": 200,
+      "servicio": "notificaciones",
+      "descripcion": "Un grupo de consumidores acumula más de 10.000 mensajes de atraso en un tópico, por ejemplo pagos.autorizados.",
+      "causa_probable": "Un consumidor lento, un error que hace reprocesar mensajes en bucle o un pico de tráfico.",
+      "accion_recomendada": "Revisar los logs del consumidor y escalar sus réplicas hasta la cantidad de particiones del tópico. Los mensajes se conservan 7 días."
+    },
+    {
+      "codigo": "WAL-4002",
+      "titulo": "Saldo insuficiente en la billetera",
+      "http_status": 422,
+      "servicio": "billetera",
+      "descripcion": "El débito solicitado supera el saldo disponible de la cuenta virtual.",
+      "causa_probable": "Saldo real insuficiente o fondos retenidos por una operación en curso.",
+      "accion_recomendada": "Informar al usuario el saldo disponible. No reintentar automáticamente."
+    }
+  ]
+}

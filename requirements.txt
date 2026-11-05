@@ -1,0 +1,27 @@
+# LangChain
+langchain-core>=1.7
+langchain-classic>=1.0          # EnsembleRetriever
+langchain-community>=0.4        # BM25Retriever
+langchain-text-splitters>=1.1
+
+# Pinecone Serverless
+pinecone>=7.0
+langchain-pinecone>=0.2.13
+
+# Búsqueda léxica
+rank-bm25>=0.2.2
+
+# Embeddings locales (proveedor por defecto, sin API key)
+langchain-huggingface>=1.2
+sentence-transformers>=6.0
+
+# Proveedores de LLM (solo para consultar.py --responder; alcanza con el que configures)
+langchain-google-genai>=4.4
+langchain-openai>=1.7
+langchain-anthropic>=1.7
+
+# Utilidades
+pypdf>=6.0
+tiktoken>=0.14
+pydantic>=2.7
+python-dotenv>=1.0

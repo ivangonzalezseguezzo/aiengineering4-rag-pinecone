@@ -1,0 +1,75 @@
+{
+  "descripcion": "Benchmark de recuperación. Cada pregunta tiene un documento esperado (la fuente principal) y la lista completa de documentos que contienen la respuesta. Los ids de documento son el nombre del archivo sin extensión, o 'catalogo_errores#CODIGO' para cada entrada del catálogo JSON.",
+  "preguntas": [
+    {
+      "id": "q01",
+      "pregunta": "¿En cuánto tiempo hay que publicar el primer aviso a los clientes cuando se caen los cobros?",
+      "documento_id_esperado": "runbook_incidentes",
+      "documentos_relevantes": ["runbook_incidentes"],
+      "tipo": "semantica"
+    },
+    {
+      "id": "q02",
+      "pregunta": "¿Qué porcentaje del tráfico recibe una versión nueva en la primera etapa del despliegue progresivo?",
+      "documento_id_esperado": "politica_despliegues",
+      "documentos_relevantes": ["politica_despliegues"],
+      "tipo": "semantica"
+    },
+    {
+      "id": "q03",
+      "pregunta": "¿Qué significa el error PAY-4091?",
+      "documento_id_esperado": "catalogo_errores#PAY-4091",
+      "documentos_relevantes": ["catalogo_errores#PAY-4091", "estandares_api"],
+      "tipo": "termino_exacto"
+    },
+    {
+      "id": "q04",
+      "pregunta": "¿Cada cuánto se renuevan las contraseñas y claves estáticas de producción?",
+      "documento_id_esperado": "politica_seguridad",
+      "documentos_relevantes": ["politica_seguridad"],
+      "tipo": "semantica"
+    },
+    {
+      "id": "q05",
+      "pregunta": "¿Cuántos minutos de datos se pueden perder como máximo si falla la base de transacciones?",
+      "documento_id_esperado": "guia_base_de_datos",
+      "documentos_relevantes": ["guia_base_de_datos", "arquitectura_plataforma"],
+      "tipo": "semantica"
+    },
+    {
+      "id": "q06",
+      "pregunta": "¿Qué header tengo que mandar para que un POST de cobro no se procese dos veces?",
+      "documento_id_esperado": "estandares_api",
+      "documentos_relevantes": ["estandares_api", "catalogo_errores#PAY-4000", "catalogo_errores#PAY-4091"],
+      "tipo": "semantica"
+    },
+    {
+      "id": "q07",
+      "pregunta": "¿A quién llama Sirena si la persona de guardia principal no confirma la página en 5 minutos?",
+      "documento_id_esperado": "guia_guardias_oncall",
+      "documentos_relevantes": ["guia_guardias_oncall"],
+      "tipo": "semantica"
+    },
+    {
+      "id": "q08",
+      "pregunta": "Aparece DB-1105 en los logs, ¿qué tengo que hacer?",
+      "documento_id_esperado": "catalogo_errores#DB-1105",
+      "documentos_relevantes": ["catalogo_errores#DB-1105", "guia_base_de_datos"],
+      "tipo": "termino_exacto"
+    },
+    {
+      "id": "q09",
+      "pregunta": "¿Qué pasa con un cobro si antifraude tarda más de 300 ms en responder?",
+      "documento_id_esperado": "arquitectura_plataforma",
+      "documentos_relevantes": ["arquitectura_plataforma", "catalogo_errores#FRD-2001"],
+      "tipo": "termino_exacto"
+    },
+    {
+      "id": "q10",
+      "pregunta": "¿Qué acción se toma cuando el presupuesto de error se consume a 14,4 veces la tasa sostenible durante una hora?",
+      "documento_id_esperado": "guia_observabilidad",
+      "documentos_relevantes": ["guia_observabilidad"],
+      "tipo": "termino_exacto"
+    }
+  ]
+}

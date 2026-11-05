@@ -1,0 +1,904 @@
+{
+  "fecha": "2026-11-04T23:12:40",
+  "backend": "pinecone",
+  "embeddings": "huggingface:intfloat/multilingual-e5-small",
+  "k": 5,
+  "candidatos_por_retriever": 10,
+  "pesos_bm25_vectorial": [
+    0.5,
+    0.5
+  ],
+  "chunking": {
+    "chunk_size": 500,
+    "chunk_overlap": 75
+  },
+  "resumen": {
+    "bm25": {
+      "recall@k": 0.9166666666666666,
+      "precision@k": 0.48,
+      "precision_maxima@k": 0.7,
+      "hit@k": 1.0,
+      "mrr": 0.95
+    },
+    "vectorial": {
+      "recall@k": 0.85,
+      "precision@k": 0.42000000000000004,
+      "precision_maxima@k": 0.7,
+      "hit@k": 0.8,
+      "mrr": 0.9
+    },
+    "hibrido": {
+      "recall@k": 0.9166666666666666,
+      "precision@k": 0.5,
+      "precision_maxima@k": 0.7,
+      "hit@k": 1.0,
+      "mrr": 0.95
+    }
+  },
+  "detalle": {
+    "bm25": [
+      {
+        "id": "q01",
+        "pregunta": "¿En cuánto tiempo hay que publicar el primer aviso a los clientes cuando se caen los cobros?",
+        "tipo": "semantica",
+        "esperado": "runbook_incidentes",
+        "relevantes": [
+          "runbook_incidentes"
+        ],
+        "recuperados": [
+          "runbook_incidentes",
+          "estandares_api",
+          "politica_seguridad",
+          "runbook_incidentes",
+          "politica_despliegues"
+        ],
+        "chunk_ids": [
+          "runbook_incidentes::000",
+          "estandares_api::001",
+          "politica_seguridad::001",
+          "runbook_incidentes::001",
+          "politica_despliegues::002"
+        ],
+        "recall": 1.0,
+        "precision": 0.4,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q02",
+        "pregunta": "¿Qué porcentaje del tráfico recibe una versión nueva en la primera etapa del despliegue progresivo?",
+        "tipo": "semantica",
+        "esperado": "politica_despliegues",
+        "relevantes": [
+          "politica_despliegues"
+        ],
+        "recuperados": [
+          "politica_despliegues",
+          "politica_despliegues",
+          "estandares_api",
+          "guia_guardias_oncall",
+          "runbook_incidentes"
+        ],
+        "chunk_ids": [
+          "politica_despliegues::001",
+          "politica_despliegues::002",
+          "estandares_api::000",
+          "guia_guardias_oncall::000",
+          "runbook_incidentes::001"
+        ],
+        "recall": 1.0,
+        "precision": 0.4,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q03",
+        "pregunta": "¿Qué significa el error PAY-4091?",
+        "tipo": "termino_exacto",
+        "esperado": "catalogo_errores#PAY-4091",
+        "relevantes": [
+          "catalogo_errores#PAY-4091",
+          "estandares_api"
+        ],
+        "recuperados": [
+          "catalogo_errores#PAY-4091",
+          "estandares_api",
+          "estandares_api",
+          "catalogo_errores#PAY-4220",
+          "catalogo_errores#PAY-5030"
+        ],
+        "chunk_ids": [
+          "catalogo_errores#PAY-4091::000",
+          "estandares_api::001",
+          "estandares_api::000",
+          "catalogo_errores#PAY-4220::000",
+          "catalogo_errores#PAY-5030::000"
+        ],
+        "recall": 1.0,
+        "precision": 0.6,
+        "precision_maxima": 0.8,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q04",
+        "pregunta": "¿Cada cuánto se renuevan las contraseñas y claves estáticas de producción?",
+        "tipo": "semantica",
+        "esperado": "politica_seguridad",
+        "relevantes": [
+          "politica_seguridad"
+        ],
+        "recuperados": [
+          "politica_seguridad",
+          "arquitectura_plataforma",
+          "catalogo_errores#FRD-2001",
+          "politica_despliegues",
+          "politica_seguridad"
+        ],
+        "chunk_ids": [
+          "politica_seguridad::000",
+          "arquitectura_plataforma::001",
+          "catalogo_errores#FRD-2001::000",
+          "politica_despliegues::000",
+          "politica_seguridad::001"
+        ],
+        "recall": 1.0,
+        "precision": 0.4,
+        "precision_maxima": 0.4,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q05",
+        "pregunta": "¿Cuántos minutos de datos se pueden perder como máximo si falla la base de transacciones?",
+        "tipo": "semantica",
+        "esperado": "guia_base_de_datos",
+        "relevantes": [
+          "arquitectura_plataforma",
+          "guia_base_de_datos"
+        ],
+        "recuperados": [
+          "guia_base_de_datos",
+          "catalogo_errores#DB-2001",
+          "guia_base_de_datos",
+          "runbook_incidentes",
+          "guia_observabilidad"
+        ],
+        "chunk_ids": [
+          "guia_base_de_datos::000",
+          "catalogo_errores#DB-2001::000",
+          "guia_base_de_datos::001",
+          "runbook_incidentes::002",
+          "guia_observabilidad::001"
+        ],
+        "recall": 0.5,
+        "precision": 0.4,
+        "precision_maxima": 1.0,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q06",
+        "pregunta": "¿Qué header tengo que mandar para que un POST de cobro no se procese dos veces?",
+        "tipo": "semantica",
+        "esperado": "estandares_api",
+        "relevantes": [
+          "catalogo_errores#PAY-4000",
+          "catalogo_errores#PAY-4091",
+          "estandares_api"
+        ],
+        "recuperados": [
+          "catalogo_errores#PAY-4000",
+          "arquitectura_plataforma",
+          "estandares_api",
+          "estandares_api",
+          "catalogo_errores#PAY-5021"
+        ],
+        "chunk_ids": [
+          "catalogo_errores#PAY-4000::000",
+          "arquitectura_plataforma::001",
+          "estandares_api::000",
+          "estandares_api::001",
+          "catalogo_errores#PAY-5021::000"
+        ],
+        "recall": 0.6666666666666666,
+        "precision": 0.6,
+        "precision_maxima": 1.0,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q07",
+        "pregunta": "¿A quién llama Sirena si la persona de guardia principal no confirma la página en 5 minutos?",
+        "tipo": "semantica",
+        "esperado": "guia_guardias_oncall",
+        "relevantes": [
+          "guia_guardias_oncall"
+        ],
+        "recuperados": [
+          "guia_guardias_oncall",
+          "runbook_incidentes",
+          "guia_guardias_oncall",
+          "guia_guardias_oncall",
+          "guia_observabilidad"
+        ],
+        "chunk_ids": [
+          "guia_guardias_oncall::000",
+          "runbook_incidentes::001",
+          "guia_guardias_oncall::001",
+          "guia_guardias_oncall::002",
+          "guia_observabilidad::001"
+        ],
+        "recall": 1.0,
+        "precision": 0.6,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q08",
+        "pregunta": "Aparece DB-1105 en los logs, ¿qué tengo que hacer?",
+        "tipo": "termino_exacto",
+        "esperado": "catalogo_errores#DB-1105",
+        "relevantes": [
+          "catalogo_errores#DB-1105",
+          "guia_base_de_datos"
+        ],
+        "recuperados": [
+          "catalogo_errores#DB-1105",
+          "guia_base_de_datos",
+          "estandares_api",
+          "catalogo_errores#DB-2001",
+          "guia_observabilidad"
+        ],
+        "chunk_ids": [
+          "catalogo_errores#DB-1105::000",
+          "guia_base_de_datos::000",
+          "estandares_api::001",
+          "catalogo_errores#DB-2001::000",
+          "guia_observabilidad::001"
+        ],
+        "recall": 1.0,
+        "precision": 0.4,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q09",
+        "pregunta": "¿Qué pasa con un cobro si antifraude tarda más de 300 ms en responder?",
+        "tipo": "termino_exacto",
+        "esperado": "arquitectura_plataforma",
+        "relevantes": [
+          "arquitectura_plataforma",
+          "catalogo_errores#FRD-2001"
+        ],
+        "recuperados": [
+          "guia_observabilidad",
+          "catalogo_errores#FRD-2001",
+          "arquitectura_plataforma",
+          "arquitectura_plataforma",
+          "politica_despliegues"
+        ],
+        "chunk_ids": [
+          "guia_observabilidad::000",
+          "catalogo_errores#FRD-2001::000",
+          "arquitectura_plataforma::001",
+          "arquitectura_plataforma::000",
+          "politica_despliegues::000"
+        ],
+        "recall": 1.0,
+        "precision": 0.6,
+        "precision_maxima": 0.8,
+        "hit": 1.0,
+        "rr": 0.5
+      },
+      {
+        "id": "q10",
+        "pregunta": "¿Qué acción se toma cuando el presupuesto de error se consume a 14,4 veces la tasa sostenible durante una hora?",
+        "tipo": "termino_exacto",
+        "esperado": "guia_observabilidad",
+        "relevantes": [
+          "guia_observabilidad"
+        ],
+        "recuperados": [
+          "guia_observabilidad",
+          "guia_observabilidad",
+          "runbook_incidentes",
+          "arquitectura_plataforma",
+          "catalogo_errores#FRD-2001"
+        ],
+        "chunk_ids": [
+          "guia_observabilidad::001",
+          "guia_observabilidad::000",
+          "runbook_incidentes::001",
+          "arquitectura_plataforma::001",
+          "catalogo_errores#FRD-2001::000"
+        ],
+        "recall": 1.0,
+        "precision": 0.4,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 1.0
+      }
+    ],
+    "vectorial": [
+      {
+        "id": "q01",
+        "pregunta": "¿En cuánto tiempo hay que publicar el primer aviso a los clientes cuando se caen los cobros?",
+        "tipo": "semantica",
+        "esperado": "runbook_incidentes",
+        "relevantes": [
+          "runbook_incidentes"
+        ],
+        "recuperados": [
+          "arquitectura_plataforma",
+          "catalogo_errores#KFK-3002",
+          "catalogo_errores#PAY-5021",
+          "catalogo_errores#FRD-2001",
+          "guia_guardias_oncall"
+        ],
+        "chunk_ids": [
+          "arquitectura_plataforma::001",
+          "catalogo_errores#KFK-3002::000",
+          "catalogo_errores#PAY-5021::000",
+          "catalogo_errores#FRD-2001::000",
+          "guia_guardias_oncall::001"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "precision_maxima": 0.6,
+        "hit": 0.0,
+        "rr": 0.0
+      },
+      {
+        "id": "q02",
+        "pregunta": "¿Qué porcentaje del tráfico recibe una versión nueva en la primera etapa del despliegue progresivo?",
+        "tipo": "semantica",
+        "esperado": "politica_despliegues",
+        "relevantes": [
+          "politica_despliegues"
+        ],
+        "recuperados": [
+          "politica_despliegues",
+          "politica_despliegues",
+          "politica_despliegues",
+          "arquitectura_plataforma",
+          "runbook_incidentes"
+        ],
+        "chunk_ids": [
+          "politica_despliegues::001",
+          "politica_despliegues::002",
+          "politica_despliegues::000",
+          "arquitectura_plataforma::002",
+          "runbook_incidentes::001"
+        ],
+        "recall": 1.0,
+        "precision": 0.6,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q03",
+        "pregunta": "¿Qué significa el error PAY-4091?",
+        "tipo": "termino_exacto",
+        "esperado": "catalogo_errores#PAY-4091",
+        "relevantes": [
+          "catalogo_errores#PAY-4091",
+          "estandares_api"
+        ],
+        "recuperados": [
+          "estandares_api",
+          "catalogo_errores#PAY-5030",
+          "catalogo_errores#PAY-4290",
+          "catalogo_errores#PAY-5021",
+          "estandares_api"
+        ],
+        "chunk_ids": [
+          "estandares_api::001",
+          "catalogo_errores#PAY-5030::000",
+          "catalogo_errores#PAY-4290::000",
+          "catalogo_errores#PAY-5021::000",
+          "estandares_api::000"
+        ],
+        "recall": 0.5,
+        "precision": 0.4,
+        "precision_maxima": 0.8,
+        "hit": 0.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q04",
+        "pregunta": "¿Cada cuánto se renuevan las contraseñas y claves estáticas de producción?",
+        "tipo": "semantica",
+        "esperado": "politica_seguridad",
+        "relevantes": [
+          "politica_seguridad"
+        ],
+        "recuperados": [
+          "politica_seguridad",
+          "politica_despliegues",
+          "politica_despliegues",
+          "politica_seguridad",
+          "guia_observabilidad"
+        ],
+        "chunk_ids": [
+          "politica_seguridad::000",
+          "politica_despliegues::002",
+          "politica_despliegues::000",
+          "politica_seguridad::001",
+          "guia_observabilidad::002"
+        ],
+        "recall": 1.0,
+        "precision": 0.4,
+        "precision_maxima": 0.4,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q05",
+        "pregunta": "¿Cuántos minutos de datos se pueden perder como máximo si falla la base de transacciones?",
+        "tipo": "semantica",
+        "esperado": "guia_base_de_datos",
+        "relevantes": [
+          "arquitectura_plataforma",
+          "guia_base_de_datos"
+        ],
+        "recuperados": [
+          "guia_base_de_datos",
+          "arquitectura_plataforma",
+          "politica_seguridad",
+          "politica_despliegues",
+          "guia_observabilidad"
+        ],
+        "chunk_ids": [
+          "guia_base_de_datos::000",
+          "arquitectura_plataforma::002",
+          "politica_seguridad::001",
+          "politica_despliegues::002",
+          "guia_observabilidad::001"
+        ],
+        "recall": 1.0,
+        "precision": 0.4,
+        "precision_maxima": 1.0,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q06",
+        "pregunta": "¿Qué header tengo que mandar para que un POST de cobro no se procese dos veces?",
+        "tipo": "semantica",
+        "esperado": "estandares_api",
+        "relevantes": [
+          "catalogo_errores#PAY-4000",
+          "catalogo_errores#PAY-4091",
+          "estandares_api"
+        ],
+        "recuperados": [
+          "catalogo_errores#PAY-4000",
+          "estandares_api",
+          "catalogo_errores#PAY-5021",
+          "catalogo_errores#PAY-4220",
+          "catalogo_errores#PAY-4091"
+        ],
+        "chunk_ids": [
+          "catalogo_errores#PAY-4000::000",
+          "estandares_api::001",
+          "catalogo_errores#PAY-5021::000",
+          "catalogo_errores#PAY-4220::000",
+          "catalogo_errores#PAY-4091::000"
+        ],
+        "recall": 1.0,
+        "precision": 0.6,
+        "precision_maxima": 1.0,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q07",
+        "pregunta": "¿A quién llama Sirena si la persona de guardia principal no confirma la página en 5 minutos?",
+        "tipo": "semantica",
+        "esperado": "guia_guardias_oncall",
+        "relevantes": [
+          "guia_guardias_oncall"
+        ],
+        "recuperados": [
+          "guia_guardias_oncall",
+          "guia_guardias_oncall",
+          "guia_guardias_oncall",
+          "estandares_api",
+          "runbook_incidentes"
+        ],
+        "chunk_ids": [
+          "guia_guardias_oncall::000",
+          "guia_guardias_oncall::002",
+          "guia_guardias_oncall::001",
+          "estandares_api::002",
+          "runbook_incidentes::001"
+        ],
+        "recall": 1.0,
+        "precision": 0.6,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q08",
+        "pregunta": "Aparece DB-1105 en los logs, ¿qué tengo que hacer?",
+        "tipo": "termino_exacto",
+        "esperado": "catalogo_errores#DB-1105",
+        "relevantes": [
+          "catalogo_errores#DB-1105",
+          "guia_base_de_datos"
+        ],
+        "recuperados": [
+          "guia_base_de_datos",
+          "guia_observabilidad",
+          "guia_base_de_datos",
+          "catalogo_errores#DB-1105",
+          "guia_observabilidad"
+        ],
+        "chunk_ids": [
+          "guia_base_de_datos::000",
+          "guia_observabilidad::002",
+          "guia_base_de_datos::001",
+          "catalogo_errores#DB-1105::000",
+          "guia_observabilidad::001"
+        ],
+        "recall": 1.0,
+        "precision": 0.6,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q09",
+        "pregunta": "¿Qué pasa con un cobro si antifraude tarda más de 300 ms en responder?",
+        "tipo": "termino_exacto",
+        "esperado": "arquitectura_plataforma",
+        "relevantes": [
+          "arquitectura_plataforma",
+          "catalogo_errores#FRD-2001"
+        ],
+        "recuperados": [
+          "catalogo_errores#FRD-2001",
+          "estandares_api",
+          "arquitectura_plataforma",
+          "catalogo_errores#PAY-5021",
+          "catalogo_errores#KFK-3002"
+        ],
+        "chunk_ids": [
+          "catalogo_errores#FRD-2001::000",
+          "estandares_api::001",
+          "arquitectura_plataforma::001",
+          "catalogo_errores#PAY-5021::000",
+          "catalogo_errores#KFK-3002::000"
+        ],
+        "recall": 1.0,
+        "precision": 0.4,
+        "precision_maxima": 0.8,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q10",
+        "pregunta": "¿Qué acción se toma cuando el presupuesto de error se consume a 14,4 veces la tasa sostenible durante una hora?",
+        "tipo": "termino_exacto",
+        "esperado": "guia_observabilidad",
+        "relevantes": [
+          "guia_observabilidad"
+        ],
+        "recuperados": [
+          "guia_observabilidad",
+          "estandares_api",
+          "runbook_incidentes",
+          "estandares_api",
+          "arquitectura_plataforma"
+        ],
+        "chunk_ids": [
+          "guia_observabilidad::001",
+          "estandares_api::000",
+          "runbook_incidentes::000",
+          "estandares_api::001",
+          "arquitectura_plataforma::002"
+        ],
+        "recall": 1.0,
+        "precision": 0.2,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 1.0
+      }
+    ],
+    "hibrido": [
+      {
+        "id": "q01",
+        "pregunta": "¿En cuánto tiempo hay que publicar el primer aviso a los clientes cuando se caen los cobros?",
+        "tipo": "semantica",
+        "esperado": "runbook_incidentes",
+        "relevantes": [
+          "runbook_incidentes"
+        ],
+        "recuperados": [
+          "estandares_api",
+          "runbook_incidentes",
+          "politica_despliegues",
+          "politica_despliegues",
+          "runbook_incidentes"
+        ],
+        "chunk_ids": [
+          "estandares_api::001",
+          "runbook_incidentes::001",
+          "politica_despliegues::002",
+          "politica_despliegues::000",
+          "runbook_incidentes::002"
+        ],
+        "recall": 1.0,
+        "precision": 0.4,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 0.5
+      },
+      {
+        "id": "q02",
+        "pregunta": "¿Qué porcentaje del tráfico recibe una versión nueva en la primera etapa del despliegue progresivo?",
+        "tipo": "semantica",
+        "esperado": "politica_despliegues",
+        "relevantes": [
+          "politica_despliegues"
+        ],
+        "recuperados": [
+          "politica_despliegues",
+          "politica_despliegues",
+          "runbook_incidentes",
+          "politica_despliegues",
+          "runbook_incidentes"
+        ],
+        "chunk_ids": [
+          "politica_despliegues::001",
+          "politica_despliegues::002",
+          "runbook_incidentes::001",
+          "politica_despliegues::000",
+          "runbook_incidentes::002"
+        ],
+        "recall": 1.0,
+        "precision": 0.6,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q03",
+        "pregunta": "¿Qué significa el error PAY-4091?",
+        "tipo": "termino_exacto",
+        "esperado": "catalogo_errores#PAY-4091",
+        "relevantes": [
+          "catalogo_errores#PAY-4091",
+          "estandares_api"
+        ],
+        "recuperados": [
+          "estandares_api",
+          "catalogo_errores#PAY-5030",
+          "catalogo_errores#PAY-4091",
+          "estandares_api",
+          "catalogo_errores#PAY-4290"
+        ],
+        "chunk_ids": [
+          "estandares_api::001",
+          "catalogo_errores#PAY-5030::000",
+          "catalogo_errores#PAY-4091::000",
+          "estandares_api::000",
+          "catalogo_errores#PAY-4290::000"
+        ],
+        "recall": 1.0,
+        "precision": 0.6,
+        "precision_maxima": 0.8,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q04",
+        "pregunta": "¿Cada cuánto se renuevan las contraseñas y claves estáticas de producción?",
+        "tipo": "semantica",
+        "esperado": "politica_seguridad",
+        "relevantes": [
+          "politica_seguridad"
+        ],
+        "recuperados": [
+          "politica_seguridad",
+          "politica_despliegues",
+          "politica_seguridad",
+          "politica_despliegues",
+          "guia_observabilidad"
+        ],
+        "chunk_ids": [
+          "politica_seguridad::000",
+          "politica_despliegues::000",
+          "politica_seguridad::001",
+          "politica_despliegues::002",
+          "guia_observabilidad::002"
+        ],
+        "recall": 1.0,
+        "precision": 0.4,
+        "precision_maxima": 0.4,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q05",
+        "pregunta": "¿Cuántos minutos de datos se pueden perder como máximo si falla la base de transacciones?",
+        "tipo": "semantica",
+        "esperado": "guia_base_de_datos",
+        "relevantes": [
+          "arquitectura_plataforma",
+          "guia_base_de_datos"
+        ],
+        "recuperados": [
+          "guia_base_de_datos",
+          "catalogo_errores#DB-2001",
+          "guia_base_de_datos",
+          "guia_observabilidad",
+          "catalogo_errores#DB-1105"
+        ],
+        "chunk_ids": [
+          "guia_base_de_datos::000",
+          "catalogo_errores#DB-2001::000",
+          "guia_base_de_datos::001",
+          "guia_observabilidad::001",
+          "catalogo_errores#DB-1105::000"
+        ],
+        "recall": 0.5,
+        "precision": 0.4,
+        "precision_maxima": 1.0,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q06",
+        "pregunta": "¿Qué header tengo que mandar para que un POST de cobro no se procese dos veces?",
+        "tipo": "semantica",
+        "esperado": "estandares_api",
+        "relevantes": [
+          "catalogo_errores#PAY-4000",
+          "catalogo_errores#PAY-4091",
+          "estandares_api"
+        ],
+        "recuperados": [
+          "catalogo_errores#PAY-4000",
+          "estandares_api",
+          "catalogo_errores#PAY-5021",
+          "arquitectura_plataforma",
+          "estandares_api"
+        ],
+        "chunk_ids": [
+          "catalogo_errores#PAY-4000::000",
+          "estandares_api::001",
+          "catalogo_errores#PAY-5021::000",
+          "arquitectura_plataforma::001",
+          "estandares_api::000"
+        ],
+        "recall": 0.6666666666666666,
+        "precision": 0.6,
+        "precision_maxima": 1.0,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q07",
+        "pregunta": "¿A quién llama Sirena si la persona de guardia principal no confirma la página en 5 minutos?",
+        "tipo": "semantica",
+        "esperado": "guia_guardias_oncall",
+        "relevantes": [
+          "guia_guardias_oncall"
+        ],
+        "recuperados": [
+          "guia_guardias_oncall",
+          "guia_guardias_oncall",
+          "guia_guardias_oncall",
+          "runbook_incidentes",
+          "politica_despliegues"
+        ],
+        "chunk_ids": [
+          "guia_guardias_oncall::000",
+          "guia_guardias_oncall::002",
+          "guia_guardias_oncall::001",
+          "runbook_incidentes::001",
+          "politica_despliegues::001"
+        ],
+        "recall": 1.0,
+        "precision": 0.6,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q08",
+        "pregunta": "Aparece DB-1105 en los logs, ¿qué tengo que hacer?",
+        "tipo": "termino_exacto",
+        "esperado": "catalogo_errores#DB-1105",
+        "relevantes": [
+          "catalogo_errores#DB-1105",
+          "guia_base_de_datos"
+        ],
+        "recuperados": [
+          "guia_base_de_datos",
+          "catalogo_errores#DB-1105",
+          "guia_base_de_datos",
+          "guia_observabilidad",
+          "guia_observabilidad"
+        ],
+        "chunk_ids": [
+          "guia_base_de_datos::000",
+          "catalogo_errores#DB-1105::000",
+          "guia_base_de_datos::001",
+          "guia_observabilidad::001",
+          "guia_observabilidad::002"
+        ],
+        "recall": 1.0,
+        "precision": 0.6,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q09",
+        "pregunta": "¿Qué pasa con un cobro si antifraude tarda más de 300 ms en responder?",
+        "tipo": "termino_exacto",
+        "esperado": "arquitectura_plataforma",
+        "relevantes": [
+          "arquitectura_plataforma",
+          "catalogo_errores#FRD-2001"
+        ],
+        "recuperados": [
+          "catalogo_errores#FRD-2001",
+          "arquitectura_plataforma",
+          "estandares_api",
+          "guia_observabilidad",
+          "catalogo_errores#PAY-5021"
+        ],
+        "chunk_ids": [
+          "catalogo_errores#FRD-2001::000",
+          "arquitectura_plataforma::001",
+          "estandares_api::001",
+          "guia_observabilidad::000",
+          "catalogo_errores#PAY-5021::000"
+        ],
+        "recall": 1.0,
+        "precision": 0.4,
+        "precision_maxima": 0.8,
+        "hit": 1.0,
+        "rr": 1.0
+      },
+      {
+        "id": "q10",
+        "pregunta": "¿Qué acción se toma cuando el presupuesto de error se consume a 14,4 veces la tasa sostenible durante una hora?",
+        "tipo": "termino_exacto",
+        "esperado": "guia_observabilidad",
+        "relevantes": [
+          "guia_observabilidad"
+        ],
+        "recuperados": [
+          "guia_observabilidad",
+          "runbook_incidentes",
+          "catalogo_errores#FRD-2001",
+          "guia_observabilidad",
+          "estandares_api"
+        ],
+        "chunk_ids": [
+          "guia_observabilidad::001",
+          "runbook_incidentes::000",
+          "catalogo_errores#FRD-2001::000",
+          "guia_observabilidad::000",
+          "estandares_api::000"
+        ],
+        "recall": 1.0,
+        "precision": 0.4,
+        "precision_maxima": 0.6,
+        "hit": 1.0,
+        "rr": 1.0
+      }
+    ]
+  }
+}
